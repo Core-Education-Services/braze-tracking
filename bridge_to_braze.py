@@ -3,8 +3,8 @@ import json
 import logging
 
 # Braze API Credentials
-BRAZE_API_URL = "https://YOUR_BRAZE_INSTANCE/api/v3/users/track"
-BRAZE_API_KEY = "YOUR_BRAZE_REST_API_KEY"
+BRAZE_API_URL = ""
+BRAZE_API_KEY = ""
 
 
 # Add retries?
