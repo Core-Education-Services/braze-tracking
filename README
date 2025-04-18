@@ -1,0 +1,18 @@
+Platform agnostic tracking script using Braze SDKs.
+Added to cdn_name and pulled in wherever needed
+
+CDN Info
+
+
+
+braze-tracking.js
+
+- Loads the Braze web SDK
+- Tracks page views, form submissions, and button clicks
+- Stores anonymous user activity until they submit an RFI
+- Add to any site using <script src=""></script>
+
+
+core-edu-braze-tracking-plugin.php
+
+- This file is meant to be shared with any partners who utilize WordPress
