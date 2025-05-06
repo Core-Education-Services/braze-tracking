@@ -20,14 +20,12 @@ const brazeTracking = () => {
       console.log("Braze tracking initialized");
     };
 
-    ///// Tracking
+    // Tracking
   
-    // Page views
     window.trackPageView = function (pageName) {
-      appboy.logCustomEvent("Page Viewed", { page_name: pageName });
+      appboy.logCustomEvent("Program Page Viewed", { page_name: pageName });
     };
   
-    // RFI form submission
     window.trackRFIForm = function (programName, email, phoneNumber) {
       appboy.logCustomEvent("RFI Submitted", { program: programName });
   
