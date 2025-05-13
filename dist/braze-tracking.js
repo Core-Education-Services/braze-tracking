@@ -8,38 +8,53 @@ const brazeTracking = () => {
     }
   
     /// V1 - Loads SDK upon page load ///
-    let script = document.createElement("script");
-    
-    script.src = "https://js.appboycdn.com/web-sdk/latest/appboy.min.js"; 
-    script.async = true;
-    document.head.appendChild(script);
-  
-    script.onload = function () {
-      appboy.initialize(sdkKey, { baseUrl: instanceURL });
-      appboy.openSession();
-  
-      console.log("Braze tracking initialized");
-    };
-    /// V1 End ///
+    braze.initialize(sdkKey, {
+      baseUrl: instanceURL,
+      devicePropertyAllowList: [
+          "browser_name",
+          "browser_version",
+          "os_name",
+          "os_version",
+          "device_model",
+          "device_type",
+          "language"
+      ]
+    });
+
+    braze.openSession();
+
+  /// V1 End ///
 
     /// V2 - Loads SDK upon RFI submission ///
-    function loadBrazeSDK(callback) {
-      if (!script) {
-          script = document.createElement("script");
-          script.src = "https://js.appboycdn.com/web-sdk/latest/appboy.min.js"; 
-          script.async = true;
-          document.head.appendChild(script);
+    // function loadBrazeSDK(callback) {
+    //   if (!script) {
+    //       script = document.createElement("script");
+    //       script.src = "https://js.appboycdn.com/web-sdk/latest/appboy.min.js"; 
+    //       script.async = true;
+    //       document.head.appendChild(script);
 
-          script.onload = function () {
-              appboy.initialize(sdkKey, { baseUrl: instanceURL });
-              appboy.openSession();
-              console.log("Braze tracking initialized");
-              if (callback) callback();
-          };
-      } else if (callback) {
-          callback();
-      }
-    }
+    //       script.onload = function () {
+    //         braze.initialize(sdkKey, {
+    //           baseUrl: instanceURL,
+    //           devicePropertyAllowList: [
+    //               "browser_name",
+    //               "browser_version",
+    //               "os_name",
+    //               "os_version",
+    //               "device_model",
+    //               "device_type",
+    //               "language"
+    //           ]
+    //         });              
+            
+    //         braze.openSession();
+    //         console.log("Braze tracking initialized");
+    //         if (callback) callback();
+    //       };
+    //   } else if (callback) {
+    //       callback();
+    //   }
+    // }
     /// V2 End ///
 
 
@@ -47,19 +62,19 @@ const brazeTracking = () => {
 
     // Update once custom events are finalized
     window.trackPageView = function (pageName) {
-      appboy.logCustomEvent("Program Page Viewed", { page_name: pageName });
+      braze.logCustomEvent("Program Page Viewed", { page_name: pageName });
     };
   
     // Update once custom events are finalized
     window.trackRFIForm = function (programName, email, phoneNumber) {
-      appboy.logCustomEvent("RFI Submitted", { program: programName });
+      braze.logCustomEvent("RFI Submitted", { program: programName });
   
       if (email) {
-        appboy.getUser().setEmail(email);
+        braze.getUser().setEmail(email);
       }
  
       if (phoneNumber) {
-        appboy.getUser().setEmail(phoneNumber);
+        braze.getUser().setEmail(phoneNumber);
       }
     };
 
