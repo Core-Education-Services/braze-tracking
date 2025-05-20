@@ -1,11 +1,8 @@
 Platform agnostic tracking script using Braze SDKs.
-Added to cdn_name and pulled in wherever needed
+Added to the Core CDN and pulled in wherever needed
 
 CDN Info
 
-
-
-braze-tracking.js
 - Loads the Braze web SDK
 - Tracks page views, form submissions, and button clicks
 - See integration docs here: 
@@ -19,9 +16,7 @@ braze-tracking.js
         }(window,document,'script');
       </script>
 
-      // Grabs the tracking script from Core's CDN
-      <script src=""></script>
+      // Grabs the config and tracking script from the Core CDN
+      <script src="https://cdn.core.edu/braze/config/clientname-config.js" defer></script>
+      <script src="https://cdn.core.edu/braze/braze-tracking.js" defer></script>
 
-
-core-edu-braze-tracking-plugin.php
-- This file is meant to be shared with any partners who utilize WordPress
